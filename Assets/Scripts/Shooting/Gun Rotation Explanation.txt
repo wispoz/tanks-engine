@@ -1,0 +1,34 @@
+The variables:
+
+var rotSpeed : float = 15;
+The speed at which we shall rotate our gun.
+
+var thisRotation : float = 0;
+The amount our gun has already rotated. This is important 
+because we need to restrict how far we can rotate our gun.
+
+Code chunks:
+
+if(Input.GetKey(KeyCode.W)) {
+If the W key is being held down.
+
+if(thisRotation > -11) {
+If thisRotation is greater than -11.
+
+transform.Rotate(Vector3(rotSpeed * Time.deltaTime, 0, 0));
+Rotate the gun downward at the speed of rotSpeed every second.
+
+thisRotation -= rotSpeed * Time.deltaTime;
+Subtract thisRotation by rotSpeed every second, to make sure we can stop the rotation when needed.
+
+if(Input.GetKey(KeyCode.S)) {
+If the S key is being held down.
+
+if(thisRotation < 89) {
+Of thosRptatopm os less tham 89.
+
+transform.Rotate(Vector3(-rotSpeed * Time.deltaTime, 0, 0));
+Rotate the gun upward at the speed of rotSpeed every second.
+
+thisRotation += rotSpeed * Time.deltaTime;
+Add rotSpeed to thisRotation every second.

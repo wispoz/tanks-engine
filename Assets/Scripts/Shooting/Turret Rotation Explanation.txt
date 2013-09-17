@@ -1,0 +1,16 @@
+Variable:
+
+var rotSpeed : float = 30;
+The speed at which the Turret will rotate.
+
+if (Input.GetKey (KeyCode.D)) {
+If the D key is held down.
+
+transform.Rotate(Vector3(0, rotSpeed * Time.deltaTime, 0));
+Rotate the turret to the right at the speed of rotSpeed, every second.
+
+if (Input.GetKey (KeyCode.A)) {
+If the S key is held down.
+
+transform.Rotate(Vector3(0, -rotSpeed * Time.deltaTime, 0));
+Rotate the turret to the left at the speed of rotSpeed, every second.

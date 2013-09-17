@@ -1,0 +1,14 @@
+﻿<Properties>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Movement\Movement.js">
+    <Files>
+      <File FileName="Assets\Scripts\Shooting\Turret Rotation.js" Line="13" Column="60" />
+      <File FileName="Assets\Scripts\Shooting\Gun Rotation.js" Line="14" Column="26" />
+      <File FileName="Assets\Scripts\Movement\Movement.js" Line="22" Column="60" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+</Properties>

@@ -1,0 +1,50 @@
+Variables:
+
+var tankShell : GameObject;
+This variable is the game object we shoot.
+
+var boomNoise : AudioClip; 
+This is the sound we play when we fire.
+
+var timer : float = 1; 
+This is the timer that has to reach timerMax before we can shoot. It is set at 1 at default so we can shoot right away.
+
+var timerMax : float = 1; 
+This is the time it takes to reload.
+
+var powerOfShot : float = 30; 
+This is how fast the projectile will be shot. I recommend this speed for realism, but it sure is fun to play around with ;).
+
+
+Custom functions:
+
+shootProjectile()
+This is our custom function that shoots the projectile when we call it.
+
+Code Chunks:
+
+timer += 1 * Time.deltaTime;
+Every second, the timer variable has a value of +1 every second.
+
+if (Input.GetKey(KeyCode.Space)) {
+While space is held down.
+
+if(timer >= timerMax) {
+If timer is greater than or equal to timerMax.
+
+shootProjectile();
+This goes to our shootProjectile function that we made for this script.
+
+timer = 0;
+Sets the timer variable to 0.
+
+var shellInstance = Instantiate(tankShell, transform.position, transform.rotation);
+Creates an instance of the tankShell variable, at the position and rotation of the object with this script.
+
+audio.PlayOneShot(boomNoise);
+Plays the noise held in the boomNoise variable.
+
+shellInstance.rigidbody.AddRelativeForce(Vector3.forward * powerOfShot, ForceMode.Impulse);
+Gives the last created shell instance a force of powerOfShot, once.
+
+

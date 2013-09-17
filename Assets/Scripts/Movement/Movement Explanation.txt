@@ -1,0 +1,93 @@
+The movement script.
+
+The variables:
+
+var moveAcceleration : float = 3; 
+This variable is the speed at which the tank will accelerate every second.
+
+var moveDecceleration : float = -3; 
+This variable is the speed at which the tank will deccelerate every second.
+
+var tanksVelocity : float = 0; 
+This is the variable that controls how fast we move. If it is positive we move forward, negative we move backwards.
+
+var maxSpeed : float = 5; 
+This is the speed we do not want to exceed.
+
+var rotSpeed : float = 30; 
+How fast we want to rotate our tank left or right.
+
+var jitControl : float = 0.02; 
+This is the lowest value the tanksVelocity variable can be before it is set back to 0, this is to stop the jittering.
+
+Code chunks:
+
+transform.Translate(Vector3(0, 0, tanksVelocity * Time.deltaTime));
+This simply stats that this transform, will move at the speed of tanksVelocity on the z axis, every second.
+If tanksVelocity is negative, the transform will move in reverse instead. Time.deltaTime simply spreads the tanksVelocity over one second.
+
+
+if (tanksVelocity <= jitControl && tanksVelocity >= -jitControl) {
+		tanksVelocity = 0;
+}
+This chunk of code states that that if tanksVelocity is less than or equal to jitControl,
+and greater than or equal to negative jitControl, tanksVelocity will be set to 0. I don't think 
+there is a need for anymore explanation than that.
+
+if (Input.GetKey (KeyCode.UpArrow)) {
+If the user is holding down the up arrow key on the keyboard.
+
+if (tanksVelocity <= maxSpeed) {
+			tanksVelocity += moveAcceleration * Time.deltaTime; 
+}
+If tanksVelocity is less than or equal to maxSpeed, add moveAcceleration to the variable every second.
+
+} else if (Input.GetKey (KeyCode.DownArrow)) {
+Up arrow is not being held down, then if the down arrow is being held down.
+
+if (tanksVelocity >= -maxSpeed) {
+			tanksVelocity -= moveAcceleration * Time.deltaTime; 
+}
+If tanksVelocity is greater than or equal to -maxSpeed, subtract moveAcceleration to the variable every second.
+
+} else {
+If the up arrow and down arrow are not being held down.
+
+if (tanksVelocity > 0) {
+If tanksVelocity is greater than 0.
+
+tanksVelocity += moveDecceleration * Time.deltaTime;
+tanksVelocity will have moveDecceleration added to it every second. 
+Since moveDecceleration is negative, tanksVelocity will go down every second.
+
+} else if (tanksVelocity < 0) {
+If it is not greater than 0, check if it is less than 0.
+
+tanksVelocity -= moveDecceleration * Time.deltaTime;
+tanksVelocity will have moveDecceleration subtracted from it every second. 
+Since moveDecceleration is negative, tanksVelocity will go up every second.
+
+
+The following is to make sure when you are reversing and turning, that you turn in the accurate direction.
+
+if (Input.GetKey (KeyCode.LeftArrow)) {
+	if (Input.GetKey(KeyCode.DownArrow)) {
+		transform.Rotate(Vector3(0, rotSpeed * Time.deltaTime, 0));
+	} else {
+		transform.Rotate(Vector3(0, -rotSpeed * Time.deltaTime, 0)); 
+	}
+}
+Makes sure that if you are holding down the left and down arrow keys, you rotate right.
+But if you are just holding down the left arrow key, you rotate left. If you think
+about this in your head, you will see that if you are reversing in a car and the wheel is
+to the left, you are going to the left. Well, in the game, if you rotate to the right while
+reversing, you simulate that actual effect of reversing.
+
+if (Input.GetKey (KeyCode.RightArrow)) {
+	if (Input.GetKey(KeyCode.DownArrow)) {
+		transform.Rotate(Vector3(0, -rotSpeed * Time.deltaTime, 0));
+	} else {
+		transform.Rotate(Vector3(0, rotSpeed * Time.deltaTime, 0));
+	}
+}
+The opposite of the previous chunk of code.

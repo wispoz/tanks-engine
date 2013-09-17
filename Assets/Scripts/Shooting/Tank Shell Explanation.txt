@@ -1,0 +1,62 @@
+Variables
+
+var lifeTimer : float = 0.0; 
+The variable to tell us how long this shell has been alive.
+
+var lifeTimerMax : float = 12.0;
+The max amount of time this shell is allowed to live. 
+
+var explosionRadius : float = 5.0;
+The radious of the full effect of the explosion.
+
+var explosionPower : float = 350.0; 
+The full power of the explosion.
+
+var explosion : GameObject;
+The particle system which replaces this object once we hit something.
+
+custom functions:
+
+explosionThing()
+The custom function that is used when we want our projectile to explode.
+
+code chunks:
+
+var thisDirection : Vector3 = transform.position + transform.TransformDirection(Vector3.forward);
+Makes a new variable, or sets it if it is already existant. This variable will be the direction of
+the shell, which lets us give it a proper projectile arc.
+
+rigidbody.AddForceAtPosition(Vector3.up * -9.81, thisDirection);
+This adds a force to the projectil at the position, of thisDirection, allowing us to make it rotate towards the ground
+while making it move to the ground at the speed of gravity. 
+
+lifeTimer += 1 * Time.deltaTime;
+Adds 1 to the lifeTimer variable every bloody feking second.
+
+if(lifeTimer >= lifeTimerMax) {
+If lifeTimer is greater than or equal to lifeTimerMax.
+
+Destroy (gameObject);
+Destroy this Game Object.
+
+explosionThing();
+Go to our custom function explosionThing.
+
+var explosionInstantiation = Instantiate(explosion, this.transform.position, this.transform.rotation);
+Instantiates an instance of our explosion particle system at the position of this projectile with its rotation.
+
+Destroy (gameObject);
+Destroy this game object.
+
+var colliders : Collider[] = Physics.OverlapSphere (transform.position, explosionRadius);
+Makes a collider which is with the radious of the explosionRadious variable.
+
+for (var hit in colliders) {
+For everything this collider hits.
+
+if (hit.rigidbody)  { 
+If an object the collider hit is a rigidbody.
+
+hit.rigidbody.AddExplosionForce(explosionPower, transform.position, explosionRadius);
+Make an explosion that effects the rigidbody it hits with full force, and effects a lot of 
+rigidbody withing a big radious.

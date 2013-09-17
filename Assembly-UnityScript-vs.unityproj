@@ -44,6 +44,7 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Object2Terrain.js" />
      <Compile Include="Assets\RotateCharacter.js" />
      <Compile Include="Assets\RotateTower.js" />
      <Compile Include="Assets\Scripts\AnimationController.js" />

@@ -1,11 +1,12 @@
 ﻿<Properties>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\Movement\Movement.js">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TankController.cs">
     <Files>
-      <File FileName="Temp\Compiled-Normal-DiffuseDetail.shader" Line="1" Column="1" />
+      <File FileName="Assets\AntiRollBar.js" Line="6" Column="1" />
       <File FileName="Assets\Scripts\Shooting\Turret Rotation.js" Line="1" Column="1" />
       <File FileName="Assets\Scripts\Shooting\Gun Rotation.js" Line="1" Column="1" />
-      <File FileName="Assets\Scripts\Movement\Movement.js" Line="22" Column="60" />
+      <File FileName="Assets\Scripts\Movement\Movement.js" Line="1" Column="1" />
+      <File FileName="Assets\TankController.cs" Line="39" Column="57" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
